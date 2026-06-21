@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料整理笔记 · ued体育信息索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fae3cd 0%, #f5d6b8 50%, #edc9a4 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            line-height: 1.7;
+        }
+        .paper {
+            max-width: 880px;
+            width: 100%;
+            background: #fffcf8;
+            border-radius: 40px 24px 40px 24px;
+            box-shadow: 0 20px 40px -12px rgba(140, 85, 40, 0.25);
+            padding: 3rem 2.5rem;
+            transition: all 0.2s ease;
+        }
+        @media (max-width: 620px) {
+            body { padding: 1rem; }
+            .paper { padding: 2rem 1.5rem; border-radius: 32px 16px 32px 16px; }
+        }
+        .post-header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eedbcc;
+            padding-bottom: 1.25rem;
+        }
+        .post-header h1 {
+            font-size: 2.2rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #3a2a1c;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+        .post-header .lede {
+            font-size: 1.1rem;
+            color: #6b4e34;
+            background: #fbf2e9;
+            padding: 0.5rem 1rem 0.5rem 1.2rem;
+            border-left: 4px solid #c28a61;
+            border-radius: 0 12px 12px 0;
+            margin-top: 0.75rem;
+        }
+        .content p {
+            margin: 1.5rem 0;
+            color: #2d221a;
+            font-size: 1rem;
+        }
+        .content p:first-of-type {
+            margin-top: 0.25rem;
+        }
+        .quote-note {
+            background: #faf1e7;
+            padding: 1.2rem 1.8rem;
+            border-radius: 20px 8px 20px 8px;
+            border-left: 6px solid #b57c56;
+            margin: 2rem 0;
+            font-style: normal;
+            color: #3d2d1f;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+        }
+        .quote-note strong {
+            color: #7a5538;
+        }
+        .quote-note a {
+            color: #7a5538;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dashed #b98762;
+            transition: border 0.15s;
+        }
+        .quote-note a:hover {
+            border-bottom: 2px solid #7a5538;
+        }
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 1.8rem 0 1rem;
+        }
+        .feature-item {
+            flex: 1 1 190px;
+            background: #fff6ed;
+            border-radius: 24px 8px 24px 8px;
+            padding: 1rem 1.2rem;
+            border: 1px solid #e8d7c6;
+            transition: box-shadow 0.15s;
+        }
+        .feature-item h3 {
+            font-size: 1rem;
+            font-weight: 550;
+            color: #4f3826;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.35rem;
+        }
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #534132;
+            margin: 0;
+            line-height: 1.5;
+        }
+        .card-button {
+            display: inline-block;
+            background: #dbb697;
+            color: #2c1d12;
+            font-weight: 500;
+            padding: 0.45rem 1.3rem;
+            border-radius: 40px 12px 40px 12px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: background 0.2s, transform 0.1s;
+            border: 1px solid #cda07a;
+            box-shadow: 0 2px 6px rgba(130, 75, 30, 0.08);
+            letter-spacing: 0.2px;
+        }
+        .card-button:hover {
+            background: #cba07c;
+            transform: scale(1.02);
+            border-color: #b6855b;
+        }
+        .footnote {
+            margin-top: 2.8rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #eedbcc;
+            font-size: 0.88rem;
+            color: #6b5542;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.8rem;
+        }
+        .footnote .faq-hint {
+            background: #f3e6db;
+            border-radius: 30px;
+            padding: 0.2rem 1rem;
+            font-size: 0.82rem;
+            color: #513f2e;
+        }
+        .footnote a {
+            color: #624d37;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #cba482;
+        }
+        .footnote a:hover {
+            color: #3a2a1c;
+        }
+        .inline-link {
+            color: #6f4d31;
+            font-weight: 450;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #cbad8e;
+            transition: color 0.1s;
+        }
+        .inline-link:hover {
+            color: #3d291b;
+            text-decoration-color: #7a5538;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #e6d3c2;
+            margin: 2rem 0 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="paper">
+        <div class="post-header">
+            <h1>关于 ued体育 · 信息整理与索引</h1>
+            <div class="lede">
+                一份从资料归档角度梳理的说明页，汇总常见问题、内容特点与实用线索。
+            </div>
+        </div>
+
+        <div class="content">
+            <p>
+                在浏览体育类资讯或平台时，经常会遇到名称相似、定位不同的站点。为了更清晰地整理线索，这里从公开资料和用户反馈中提取了关于 <a href="https://zhs-uedsports.com" class="inline-link">ued体育</a> 的一些信息颗粒。以下内容不构成推荐或评价，仅仅作为一份可查阅的索引笔记。
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>📋 内容侧重</h3>
+                    <p>赛事动态、比分汇总、选手背景等方向，更新节奏偏日常。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🔖 界面风格</h3>
+                    <p>偏信息型布局，条目清晰，适合快速浏览。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>📁 栏目结构</h3>
+                    <p>常见板块包括热门赛事、数据图表、近期回顾等。</p>
+                </div>
+            </div>
+
+            <p>
+                从资料整理的角度看，一个站点的价值往往取决于它能否持续提供结构稳定、更新可循的信息。根据近期的观察记录，<a href="https://zhs-uedsports.com" class="inline-link">ued体育</a> 在赛事分类和条目归档上保持了相对一致的格式，这对于需要反复查阅的人来说是加分项。当然，不同用户的浏览习惯差异很大，建议根据自身需求做判断。
+            </p>
+
+            <div class="quote-note">
+                <strong>📎 整理备注</strong><br>
+                如果你正在对比多个体育信息源，可以把 <a href="https://zhs-uedsports.com">ued体育</a> 作为一个参考点。它本身不提供独家内容，但作为索引工具或补充渠道，或许能帮你节省一些信息筛选的时间。请根据实际情况合理使用。
+            </div>
+
+            <p>
+                另外，在收集信息的过程中，有几个细节值得留意：首先，站内部分数据页面包含外链引用，交叉验证时建议点开原始来源；其次，移动端适配做得不错，横竖屏切换后排版基本不乱；最后，搜索功能支持关键词匹配，但暂未发现高级筛选。这些细节算不上缺点，只是整理时顺手记下的特点。
+            </p>
+
+            <p>
+                对于初次接触的用户，可以从热门赛事板块入手，那里通常聚合了近期关注度较高的条目。如果你习惯用 RSS 或收藏夹管理信息流，也可以考虑把 <a href="https://zhs-uedsports.com" class="inline-link">ued体育</a> 加入你的体育类目清单。保持信息渠道的多样性总归是好事。
+            </p>
+
+            <hr>
+
+            <div style="margin: 1rem 0 0.2rem;">
+                <span style="font-weight: 500; color: #4a3423;">📌 常见问题简记</span>
+            </div>
+            <p style="margin-top: 0.5rem;">
+                <strong>Q：站内信息多久更新一次？</strong><br>
+                根据日常观察，重要赛事期间更新频率会提高，平时大约每天 1–2 次内容更替。<br>
+                <strong>Q：是否需要注册才能浏览？</strong><br>
+                大部分内容可直接查看，部分功能（如收藏或评论）可能需要简单注册。<br>
+                <strong>Q：是否有历史数据归档？</strong><br>
+                部分板块保留了过去几个月的记录，暂未发现按年份归档的独立页面。
+            </p>
+        </div>
+
+        <div class="footnote">
+            <span>📋 索引版本 · 2025</span>
+            <span class="faq-hint">📚 仅供参考，不构成使用建议</span>
+            <span>
+                <a href="https://zhs-uedsports.com" class="card-button">ued体育</a>
+            </span>
+        </div>
+
+        <!-- 隐藏的创作种子（仅用于标识，不显示） -->
+        <div style="display: none;">55dd26e7d919b487</div>
+    </div>
+</body>
+</html>
