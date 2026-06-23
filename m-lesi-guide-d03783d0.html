@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>乐思体育 – 资料索引与信息整理</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: #f5f9fc;
+      color: #1e2a34;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero 区域 */
+    .hero {
+      background: linear-gradient(145deg, #e6f2f5 0%, #d1e6ed 100%);
+      padding: 4rem 0 3.2rem;
+      border-bottom: 1px solid #c7dce5;
+    }
+
+    .hero__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(27, 130, 135, 0.08);
+      border-radius: 40px;
+      padding: 6px 16px 6px 14px;
+      margin-bottom: 1.8rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      color: #197a80;
+      border: 1px solid #b1d2da;
+    }
+
+    .hero__badge::before {
+      content: "✦";
+      font-size: 0.9rem;
+      margin-right: 4px;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #103e45;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(130deg, #1b8287 0%, #2a9d97 70%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+    }
+
+    .hero p {
+      max-width: 700px;
+      font-size: 1.1rem;
+      color: #2e4e57;
+      margin-bottom: 2rem;
+    }
+
+    .hero__meta {
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 8px 18px;
+      border-radius: 30px;
+      backdrop-filter: blur(4px);
+      color: #1a5f66;
+      border: 1px solid #d0e2e9;
+    }
+
+    /* 优势区 — 信息卡片网格 */
+    .section {
+      padding: 3.6rem 0;
+    }
+
+    .section__title {
+      font-size: 1.6rem;
+      font-weight: 480;
+      letter-spacing: -0.3px;
+      color: #1b4b52;
+      margin-bottom: 0.7rem;
+    }
+
+    .section__sub {
+      color: #426871;
+      margin-bottom: 2.4rem;
+      font-size: 1rem;
+      border-left: 4px solid #3ba49c;
+      padding-left: 14px;
+      background: #e9f2f5;
+      border-radius: 0 8px 8px 0;
+      line-height: 1.5;
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.8rem 1.4rem 1.5rem;
+      box-shadow: 0 6px 18px rgba(43, 108, 112, 0.06);
+      border: 1px solid #e1eef2;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 26px rgba(33, 108, 112, 0.1);
+    }
+
+    .card__icon {
+      font-size: 1.9rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      background: #dceef2;
+      width: 42px;
+      height: 42px;
+      line-height: 44px;
+      text-align: center;
+      border-radius: 14px;
+      color: #1a7a7a;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 520;
+      margin: 0.5rem 0 0.4rem;
+      color: #1b464e;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: #345b63;
+      margin-bottom: 0.15rem;
+    }
+
+    .card .tag {
+      display: inline-block;
+      background: #e2f0f2;
+      border-radius: 30px;
+      padding: 2px 12px;
+      font-size: 0.75rem;
+      color: #1e6e70;
+      margin-top: 0.6rem;
+    }
+
+    /* 说明区 — 文章式段落 */
+    .note-section {
+      background: white;
+      border-radius: 28px;
+      padding: 2.6rem 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px solid #d3e3e9;
+      margin: 1.8rem 0;
+    }
+
+    .note-section h2 {
+      font-size: 1.5rem;
+      font-weight: 470;
+      color: #13464d;
+      border-bottom: 2px solid #c7dee4;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+    }
+
+    .note-section p {
+      margin-bottom: 1.2rem;
+      color: #1b3f47;
+      font-size: 1.02rem;
+    }
+
+    .note-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .note-section li {
+      padding: 0.5rem 0 0.5rem 1.8rem;
+      position: relative;
+      color: #1d4d56;
+    }
+
+    .note-section li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #389e95;
+      font-size: 1.2rem;
+    }
+
+    .highlight-link {
+      color: #1a7b7b;
+      text-decoration: none;
+      font-weight: 470;
+      border-bottom: 1px dashed #7bb5b5;
+      transition: border 0.2s;
+    }
+
+    .highlight-link:hover {
+      border-bottom: 1px solid #1a7b7b;
+    }
+
+    /* FAQ摘要 */
+    .faq-summary {
+      background: #ebf3f6;
+      border-radius: 24px;
+      padding: 2rem 2rem 1.6rem;
+      margin: 1rem 0 2rem;
+    }
+
+    .faq-summary h3 {
+      font-size: 1.2rem;
+      font-weight: 480;
+      color: #12444b;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #cbdce2;
+    }
+
+    .faq-item:last-child {
+      border-bottom: 0;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      color: #1c5a60;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item span {
+      color: #2a5c63;
+      font-size: 0.93rem;
+    }
+
+    /* 底部链接 */
+    .footer {
+      padding: 2.8rem 0 2.4rem;
+      border-top: 1px solid #d1e0e6;
+      text-align: center;
+      color: #3e6870;
+    }
+
+    .footer p {
+      max-width: 600px;
+      margin: 0 auto 0.6rem;
+      font-size: 0.95rem;
+    }
+
+    .footer .sentence-link {
+      background: #e7f1f4;
+      padding: 0.7rem 1.8rem;
+      border-radius: 60px;
+      display: inline-block;
+      margin: 1rem 0 0.5rem;
+      border: 1px solid #b9d3db;
+    }
+
+    .footer a, .sentence-link a {
+      color: #166d6d;
+      text-decoration: none;
+      font-weight: 480;
+      border-bottom: 1px solid #91bfbf;
+    }
+
+    .footer a:hover {
+      border-bottom: 1px solid #166d6d;
+    }
+
+    .footer small {
+      display: block;
+      margin-top: 1.4rem;
+      color: #4a727a;
+      font-size: 0.8rem;
+      opacity: 0.75;
+    }
+
+    /* 移动端微调 */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .grid-cards {
+        grid-template-columns: 1fr;
+      }
+      .note-section {
+        padding: 1.8rem 1.2rem;
+      }
+      .faq-summary {
+        padding: 1.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero 区 -->
+  <header class="hero">
+    <div class="container hero__inner">
+      <div class="hero__badge">资料整理 · 信息索引</div>
+      <h1>从碎片到脉络 · <span>乐思体育</span></h1>
+      <p>围绕体育内容、训练记录与赛事资料，建立温和而有序的信息整理方式。不追求覆盖，更看重条理。</p>
+      <div class="hero__meta">索引范围：教程 · 笔记 · 数据 · 动态</div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 优势区（网格卡片） -->
+    <section class="section">
+      <h2 class="section__title">整理结构 · 一目了然</h2>
+      <div class="section__sub">我们希望每一个访问者都能快速找到自己关注的资料线索，而不是漫无目的地翻找。</div>
+      <div class="grid-cards">
+        <div class="card">
+          <div class="card__icon">📂</div>
+          <h3>资料分类</h3>
+          <p>按运动项目、训练周期、技术阶段建立索引夹，减少信息过载。</p>
+          <span class="tag">持续更新</span>
+        </div>
+        <div class="card">
+          <div class="card__icon">📋</div>
+          <h3>笔记化整理</h3>
+          <p>每份资料附带简短摘要与使用场景说明，方便快速判断相关性。</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">🔍</div>
+          <h3>关键词指引</h3>
+          <p>常见问题与高频词均有单独页面做横向关联，提升查找效率。</p>
+          <span class="tag">交叉引用</span>
+        </div>
+        <div class="card">
+          <div class="card__icon">📅</div>
+          <h3>动态归档</h3>
+          <p>赛事记录、规则变动、术语更新都会以时间线形式统一存放。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 说明区：从资料索引角度展开 -->
+    <div class="note-section">
+      <h2>索引并不是终点</h2>
+      <p>我们习惯把体育看作一个由大量文档、表格、视频片段和教学笔记构成的领域。在浏览 <a href="https://m--lesi.com" class="highlight-link">乐思体育</a> 时，你可能会发现很多内容都以“索引卡片”和“标签式摘要”呈现——这不是为了简化，而是希望帮助使用者更快定位自己需要的部分。</p>
+      <p>如果你曾经在查找某个训练方法或比赛规则时花费大量时间，或许能理解这种整理方式的价值：</p>
+      <ul>
+        <li>每个条目都附带来源或参考链接，不做无根据的断言；</li>
+        <li>同类资料之间通过内部链接互相通达，形成小型知识网络；</li>
+        <li>定期根据用户反馈调整分类细节，使索引更贴合实际使用习惯。</li>
+      </ul>
+      <p style="margin-top: 0.8rem;">当信息可以被检索，它才更容易被使用。这也是资料整理工作的初衷之一。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-summary">
+      <h3>常见疑问摘要</h3>
+      <div class="faq-item">
+        <strong>❔ 资料多久更新一次？</strong>
+        <span>根据运动季节和赛事周期调整，主要项目每月至少补充或修订一次。日常小范围更新不定时。</span>
+      </div>
+      <div class="faq-item">
+        <strong>❔ 可以提交资料或建议吗？</strong>
+        <span>目前通过站内留言接收建议，部分内容会标注“待核实”，欢迎提供信息来源或修正意见。</span>
+      </div>
+      <div class="faq-item">
+        <strong>❔ 索引覆盖哪些运动项目？</strong>
+        <span>以常见球类、田径、体能训练为主，也收录部分小众项目的规则与术语，但深度不一。</span>
+      </div>
+    </div>
+
+    <!-- 底部链接（自然嵌入句子） -->
+    <footer class="footer">
+      <p>如果你希望以更平和的方式浏览体育资料，可以试试 <a href="https://m--lesi.com">乐思体育</a> 的内容索引结构——也许会发现一些新的整理思路。</p>
+      <div class="sentence-link">
+        <span>📎 资料索引 · </span><a href="https://m--lesi.com">乐思体育</a>
+      </div>
+      <small>内容仅供参考，不构成训练或医疗建议。索引版本持续迭代。</small>
+    </footer>
+
+  </main>
+</body>
+</html>
