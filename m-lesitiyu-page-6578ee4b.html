@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes">
+  <title>乐思体育 · 温和开场</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #fbeae8 0%, #f7ded5 55%, #f3d0c0 100%);
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.2rem;
+      line-height: 1.7;
+      color: #3f2c26;
+    }
+
+    .story-card {
+      max-width: 870px;
+      width: 100%;
+      background: rgba(255, 250, 245, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 42px 18px 42px 18px;
+      box-shadow: 0 20px 40px -12px rgba(120, 60, 40, 0.2), 0 4px 16px rgba(200, 140, 100, 0.08);
+      padding: 3rem 2.4rem 2.8rem;
+      transition: box-shadow 0.3s ease;
+    }
+
+    @media (max-width: 540px) {
+      body { padding: 1.4rem 1rem; }
+      .story-card { padding: 2rem 1.4rem 1.8rem; border-radius: 30px 12px 30px 12px; }
+    }
+
+    /* —— 故事节奏 —— */
+    .opening-line {
+      font-size: 1.9rem;
+      font-weight: 340;
+      letter-spacing: 0.02em;
+      color: #5f3e34;
+      border-left: 5px solid #e3b4a0;
+      padding-left: 1.2rem;
+      margin-bottom: 1.6rem;
+      line-height: 1.4;
+    }
+
+    .opening-line span {
+      font-weight: 500;
+      background: linear-gradient(135deg, #b57c68, #935d47);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .carry-paragraph {
+      font-size: 1.06rem;
+      margin: 1.2rem 0 1.6rem;
+      color: #5a3d34;
+      max-width: 650px;
+    }
+
+    .carry-paragraph a {
+      color: #8a5b48;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid #dbb7a8;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .carry-paragraph a:hover {
+      color: #643f30;
+      border-bottom-color: #b4826c;
+    }
+
+    /* 特点卡片组：温和列表 */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.1rem 1.8rem;
+      margin: 2.2rem 0 1.8rem;
+    }
+
+    .feature-item {
+      flex: 1 1 180px;
+      background: #fffaf7;
+      padding: 1.1rem 1.2rem 0.95rem;
+      border-radius: 24px 8px 24px 8px;
+      box-shadow: inset 0 1px 2px rgba(255, 225, 210, 0.6), 0 4px 10px -4px rgba(130, 70, 40, 0.08);
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .feature-item:hover {
+      background: #fff5ef;
+      transform: translateY(-2px);
+    }
+
+    .feature-item h3 {
+      font-size: 1rem;
+      font-weight: 540;
+      color: #6f493b;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feature-item h3::before {
+      content: "· ·";
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      color: #dbb09b;
+      margin-right: 4px;
+    }
+
+    .feature-item p {
+      font-size: 0.92rem;
+      color: #5f443b;
+      line-height: 1.6;
+    }
+
+    /* 温和结尾 / 收束  */
+    .gentle-closing {
+      margin: 2rem 0 0.2rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid #edd7ce;
+      font-size: 1.02rem;
+      color: #5c4036;
+      background: rgba(251, 240, 233, 0.4);
+      border-radius: 0 12px 0 12px;
+      padding: 1rem 0.8rem 0.7rem 1rem;
+      line-height: 1.8;
+      max-width: 100%;
+    }
+
+    .gentle-closing strong {
+      font-weight: 500;
+      color: #784e3d;
+    }
+
+    .gentle-closing a {
+      color: #7b5442;
+      text-decoration: none;
+      font-weight: 480;
+      border-bottom: 1px solid #dbb3a2;
+      transition: border-color 0.2s;
+    }
+
+    .gentle-closing a:hover {
+      border-bottom-color: #9a6b57;
+      color: #4d3228;
+    }
+
+    .page-footer-note {
+      margin-top: 1.8rem;
+      font-size: 0.8rem;
+      color: #ac8574;
+      text-align: center;
+      opacity: 0.65;
+      letter-spacing: 0.3px;
+    }
+
+    hr.soft-break {
+      border: none;
+      border-top: 1px solid #eedbd1;
+      margin: 1.2rem 0 1.5rem;
+      opacity: 0.5;
+    }
+
+    /* 辅助链接按钮感（非 a 标签） */
+    .text-link-button {
+      display: inline-block;
+      background: #f0dbd0;
+      color: #543a30;
+      padding: 0.1rem 0.7rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 420;
+      transition: background 0.2s;
+    }
+
+    .text-link-button:hover {
+      background: #e7cbbd;
+    }
+  </style>
+</head>
+<body>
+<div class="story-card">
+
+  <!-- 开场短句 -->
+  <div class="opening-line">
+    有时候，一个稳定的入口<br>
+    比什么都重要。<span>……</span>
+  </div>
+
+  <!-- 承接段落，自然包含 a 标签 -->
+  <div class="carry-paragraph">
+    三年前朋友推荐了 <a href="https://m--lesitiyu.com">乐思体育</a>，说页面清爽、信息直接。我带着好奇点开，发现它没有花哨的弹窗，也没有层层跳转。作为经常需要快速查阅运动课程与场馆动态的人，这种「不被干扰」的浏览体验，反而成了我持续使用的理由。后来慢慢知道，它背后是一支很在意细节的小团队。
+  </div>
+
+  <!-- 特点列表：温和有变化 -->
+  <div class="feature-grid">
+    <div class="feature-item">
+      <h3>直达，不绕路</h3>
+      <p>打开就是核心内容，没有强制注册页，也没有隐藏菜单。从首页到课程详情，两步之内。</p>
+    </div>
+    <div class="feature-item">
+      <h3>更新有规律</h3>
+      <p>每周二、周五固定更新活动与场地日程，偶尔有临时调整也会在首页用温和的提示条说明。</p>
+    </div>
+    <div class="feature-item">
+      <h3>移动端适配</h3>
+      <p>在手机浏览器里阅读与操作都很顺手，按钮大小、行距都保留了呼吸感，不会误触。</p>
+    </div>
+    <div class="feature-item" style="flex: 1 1 200px;">
+      <h3>克制的信息量</h3>
+      <p>每个页面只讲一件事。没有琳琅满目的 banner 轮播，也不会推送未订阅的消息。</p>
+    </div>
+  </div>
+
+  <!-- 温和的承接场景／补充段落 -->
+  <p style="font-size: 0.98rem; color: #6e4d40; margin: 0.6rem 0 0.2rem;">
+    除了课程与场馆信息，偶尔也能看到一些运动小贴士——不是硬广，更像是团队顺手写的笔记。这种氛围让我觉得，<span class="text-link-button">它不只是一个工具页面</span>，更像一个安静的社区公告板。
+  </p>
+
+  <!-- 温和结尾 + 再次自然嵌入 a 标签 (不同句式) -->
+  <div class="gentle-closing">
+    <strong>· 尾声 ·</strong><br>
+    如果你也在寻找一个没有弹窗焦虑、内容实在的运动信息入口，不妨把 <a href="https://m--lesitiyu.com">乐思体育</a> 放进浏览器书签。它不一定适合所有人，但对于偏好安静浏览节奏的人来说，或许刚好对味。
+  </div>
+
+  <!-- 额外的 FAQ 摘要（短）  -->
+  <hr class="soft-break">
+  <div style="display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; font-size: 0.9rem; color: #795a4d; background: #f7ede7; padding: 0.9rem 1.2rem; border-radius: 28px 6px 28px 6px; margin: 0.6rem 0 0.2rem;">
+    <span style="font-weight: 470;">❔ 常见疑问摘要</span>
+    <span>· 需要注册吗？大部分浏览无需登录</span>
+    <span>· 内容更新频率？每周固定两次</span>
+    <span>· 移动端是否流畅？是，专门适配过</span>
+  </div>
+
+  <div class="page-footer-note">
+    —— 日常页面 · 温和入口 ——
+  </div>
+
+</div>
+</body>
+</html>
