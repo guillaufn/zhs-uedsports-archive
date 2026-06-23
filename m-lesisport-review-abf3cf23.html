@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>乐思体育 — 运动活力与专业平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5fbfc;
+            color: #1c2b2e;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(145deg, #0b2f35 0%, #215a63 100%);
+            color: #eefafc;
+            padding: 60px 0 56px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            right: -20px;
+            width: 260px;
+            height: 260px;
+            background: rgba(50, 200, 190, 0.07);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            max-width: 720px;
+        }
+
+        .hero .sub {
+            font-size: 1.2rem;
+            font-weight: 350;
+            max-width: 600px;
+            color: #c5e8ed;
+            margin-bottom: 24px;
+        }
+
+        .hero-cta {
+            background: #2bbbad;
+            border: none;
+            color: #0c2a30;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-size: 1rem;
+            display: inline-block;
+            transition: 0.25s;
+            cursor: default;
+            box-shadow: 0 4px 12px rgba(0, 30, 30, 0.25);
+        }
+
+        .hero-cta a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* 卡片网格通用 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            padding: 40px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 28px 22px;
+            box-shadow: 0 6px 18px rgba(0, 40, 50, 0.04), 0 2px 6px rgba(0, 30, 30, 0.03);
+            border: 1px solid #d8ecef;
+            transition: 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(24, 110, 110, 0.08);
+            border-color: #a0d4db;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #0d434b;
+        }
+
+        .card p {
+            color: #2f4a4f;
+            font-size: 0.98rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #d7f0f0;
+            color: #0a4a50;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 40px;
+            margin-bottom: 10px;
+            letter-spacing: 0.02em;
+        }
+
+        /* 说明区域（融合网格+段落） */
+        .explain-section {
+            padding: 24px 0 32px;
+        }
+
+        .explain-section h2 {
+            font-size: 1.8rem;
+            font-weight: 580;
+            margin-bottom: 28px;
+            color: #083238;
+            border-left: 6px solid #2bbbad;
+            padding-left: 18px;
+        }
+
+        .explain-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .explain-item {
+            background: white;
+            padding: 24px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 12px rgba(0, 45, 45, 0.03);
+            border: 1px solid #d4e9ec;
+        }
+
+        .explain-item h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0f4e58;
+            margin-bottom: 8px;
+        }
+
+        .faq-summary {
+            background: #ecf7f9;
+            padding: 44px 0 40px;
+            margin: 20px 0 10px;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.6rem;
+            font-weight: 540;
+            margin-bottom: 28px;
+            color: #083238;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 20px;
+            padding: 20px 24px;
+            margin-bottom: 18px;
+            border: 1px solid #cfe3e8;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #083238;
+            margin-bottom: 4px;
+        }
+
+        .faq-item p {
+            color: #2f544b;
+        }
+
+        .foot-links {
+            padding: 36px 0 48px;
+            text-align: center;
+            border-top: 1px solid #c8e2e7;
+            margin-top: 12px;
+        }
+
+        .foot-links a {
+            color: #1d6b72;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 0 10px;
+            border-bottom: 1px solid transparent;
+            transition: border 0.2s;
+        }
+
+        .foot-links a:hover {
+            border-bottom: 1px solid #2bbbad;
+        }
+
+        .foot-links .legal-note {
+            margin-top: 18px;
+            color: #607a7e;
+            font-size: 0.86rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 680px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 28px 0;
+            }
+
+            .explain-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .faq-item {
+                padding: 18px;
+            }
+
+            .foot-links a {
+                display: inline-block;
+                margin: 6px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 44px 0 48px;
+            }
+
+            .hero .sub {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 0 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero 区 -->
+    <section class="hero">
+        <div class="container">
+            <h1>关于乐思体育<br>运动信息与可信入口</h1>
+            <div class="sub">为运动爱好者提供简洁、可靠的内容聚合与平台导航，聚焦真实体验与实用信息。</div>
+            <span class="hero-cta"><a href="https://m--lesisport.com">乐思体育</a></span>
+        </div>
+    </section>
+
+    <!-- 优势区 (卡片网格) -->
+    <div class="container card-grid">
+        <div class="card">
+            <span class="badge">清晰架构</span>
+            <h3>内容精选</h3>
+            <p>围绕运动项目、训练方法与装备资讯，梳理有价值的内容线索，减少信息噪音。</p>
+        </div>
+        <div class="card">
+            <span class="badge">持续迭代</span>
+            <h3>日常更新</h3>
+            <p>站点保持规律性刷新，栏目与专题跟随运动热点调整，不堆砌陈旧信息。</p>
+        </div>
+        <div class="card">
+            <span class="badge">直观路径</span>
+            <h3>低门槛进入</h3>
+            <p>页面结构简洁，主要入口与导航直接可见，适配不同设备的阅读习惯。</p>
+        </div>
+        <div class="card">
+            <span class="badge">用户反馈</span>
+            <h3>场景优先</h3>
+            <p>参考运动社群与爱好者实际使用场景，优化信息层级与展现顺序。</p>
+        </div>
+    </div>
+
+    <!-- 说明区 (介绍+可信说明角度) -->
+    <div class="container explain-section">
+        <h2>站点介绍与可信说明</h2>
+        <div class="explain-grid">
+            <div class="explain-item">
+                <h4>定位与边界</h4>
+                <p><a href="https://m--lesisport.com" style="color:#1f7e7e;text-decoration:underline;">乐思体育</a> 是一个以运动内容聚合与链接推荐为主的轻量平台，不直接销售商品、不代运营赛事。所有信息均来自公开资料或经授权的转载，引用时标注来源。</p>
+            </div>
+            <div class="explain-item">
+                <h4>内容来源</h4>
+                <p>站点编辑团队持续筛选运动类公开资源、训练指南及装备测评，并对关键数据做交叉核实。如有转载内容，页面会明确标示出处。</p>
+            </div>
+            <div class="explain-item">
+                <h4>用户自主判断</h4>
+                <p>所有运动建议、训练计划或产品信息均仅供参考，不构成专业医疗或训练处方。参与高强度运动前请根据个人状况咨询专业人士。</p>
+            </div>
+            <div class="explain-item">
+                <h4>联系方式与纠错</h4>
+                <p>若发现错误链接、过期内容或侵权线索，可通过网站底部邮箱或社交媒体账号与编辑组取得联系，我们会在合理时间内处理。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要区 -->
+    <section class="faq-summary">
+        <div class="container">
+            <h2>常见疑问 · 摘要</h2>
+            <div class="faq-item">
+                <strong>乐思体育 适合哪些人？</strong>
+                <p>运动初学者、资深爱好者以及需要快速查找运动器材信息、训练方法的人。站点内容偏向实用与科普，不限于单一项目。</p>
+            </div>
+            <div class="faq-item">
+                <strong>信息多久更新一次？</strong>
+                <p>主要栏目每月至少刷新一次，活动或赛事期间会增加内容频次。所有时效性内容均标注日期，方便判断。</p>
+            </div>
+            <div class="faq-item">
+                <strong>网站是否有付费内容？</strong>
+                <p>目前保持完全免费访问，无隐藏付费区。未来若有增值服务会提前公示，并保持基础内容免费。</p>
+            </div>
+            <div class="faq-item">
+                <strong>如何快速开始浏览？</strong>
+                <p>直接通过 <a href="https://m--lesisport.com" style="color:#1d6b72;text-decoration:underline;">乐思体育</a> 首页的菜单进入不同板块，或使用搜索功能查找特定运动主题。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部链接区 -->
+    <div class="container foot-links">
+        <div>
+            <a href="https://m--lesisport.com">乐思体育</a> · 
+            <a href="#">关于我们</a> · 
+            <a href="#">内容准则</a> · 
+            <a href="#">隐私说明</a> · 
+            <a href="#">联系编辑</a>
+        </div>
+        <div class="legal-note">
+            本页面仅为信息展示，所有内容仅供参考，不构成任何保证或承诺。
+        </div>
+    </div>
+
+</body>
+</html>
